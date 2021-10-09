@@ -126,6 +126,7 @@ else:
         "set_config",
         "config_context",
         "show_versions",
+        "hub"
     ]
 
 
