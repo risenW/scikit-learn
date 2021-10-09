@@ -9,9 +9,7 @@ from huggingface_hub import hf_hub_download
 from joblib import load
 from pickle import load as pload
 
-__all__ = ['load_model']
-
-def load_model(repo_id, filename=None, serialization_method="joblib", revision=None, cache_dir=None):
+class HubLoader:
     """Loads a model from huggingface.co/models.
 
     Parameters
@@ -36,15 +34,31 @@ def load_model(repo_id, filename=None, serialization_method="joblib", revision=N
     -------
     Scikit-learn model object
         The model loaded from huggingface.co/models.
-            
+                
     """
-    model_path = hf_hub_download(repo_id, filename, revision, cache_dir)
+    def __init__(
+        self,
+        repo_id,
+        filename=None,
+        serialization_method="joblib",
+        revision=None,
+        cache_dir=None
+    ):
+        self.repo_id = repo_id
+        self.filename = filename
+        self.serialization_method = serialization_method
+        self.revision = revision
+        self.cache_dir = cache_dir
 
-    if serialization_method == "joblib":
-        model = load(model_path)
-    elif serialization_method == "pickle":
-        model = pload(model_path)
-    else:
-        raise ValueError("serialization_method must be 'joblib' or 'pickle'")
+    def load(self):
         
-    return model
+        model_path = hf_hub_download(self.repo_id, self.filename, self.revision, self.cache_dir)
+
+        if self.serialization_method == "joblib":
+            model = load(model_path)
+        elif self.serialization_method == "pickle":
+            model = pload(model_path)
+        else:
+            raise ValueError("serialization_method must be 'joblib' or 'pickle'")
+            
+        return model

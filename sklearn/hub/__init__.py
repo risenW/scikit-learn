@@ -1,3 +1,6 @@
-from ._load import load_model
+"""Model loader from huggingface hub"""
 
-__all__ = ["load_model"]
+from ._hub_loader import HubLoader
+
+__all__ = ["HubLoader"]
+
