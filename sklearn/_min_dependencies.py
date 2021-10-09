@@ -42,6 +42,7 @@ dependent_packages = {
     "Pillow": ("7.1.2", "docs"),
     "sphinx-prompt": ("1.3.0", "docs"),
     "sphinxext-opengraph": ("0.4.2", "docs"),
+    "huggingface_hub": ("0.0.19", "install"),
 }
 
 
