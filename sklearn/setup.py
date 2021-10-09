@@ -52,6 +52,7 @@ def configuration(parent_package="", top_path=None):
     config.add_subpackage("_loss/tests")
     config.add_subpackage("externals")
     config.add_subpackage("externals/_packaging")
+    config.add_subpackage("hub")
 
     # submodules which have their own setup.py
     config.add_subpackage("cluster")

@@ -120,13 +120,14 @@ else:
         "discriminant_analysis",
         "impute",
         "compose",
+        "hub",
         # Non-modules:
         "clone",
         "get_config",
         "set_config",
         "config_context",
         "show_versions",
-        "hub"
+      
     ]
 
 
